@@ -1,4 +1,5 @@
 package com.itheima.day01.demo02.Date;
+
 /*
     java.util.Date:表示日期和时间的类
     类 Date 表示特定的瞬间，精确到毫秒。
@@ -24,7 +25,7 @@ package com.itheima.day01.demo02.Date;
         1 天 = 24 × 60 × 60 = 86400 秒  = 86400 x 1000 = 86400000毫秒
  */
 public class Demo01Date {
-    public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());//获取当前系统时间到1970 年 1 月 1 日 00:00:00经历了多少毫秒
-    }
+  public static void main(String[] args) {
+    System.out.println(System.currentTimeMillis());//获取当前系统时间到1970 年 1 月 1 日 00:00:00经历了多少毫秒
+  }
 }

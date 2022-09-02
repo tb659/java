@@ -1,9 +1,9 @@
 package demo02Class;
 
-public class Student {
+public class Student implements Comparable<Student> {
 //
-//  String name;
-//  int age;
+  String name;
+  int age;
 //
 //  public void eat() {
 //    System.out.println("吃饭");
@@ -17,8 +17,8 @@ public class Student {
 //    System.out.println("学习");
 //  }
 
-  private String name;
-  private int age;
+//  private String name;
+//  private int age;
 
   public Student() {
   }
@@ -26,6 +26,14 @@ public class Student {
   public Student(String name, int age) {
     this.name = name;
     this.age = age;
+  }
+
+  @Override
+  public String toString() {
+    return "Student{" +
+      "name='" + name + '\'' +
+      ", age=" + age +
+      '}';
   }
 
   public String getName() {
@@ -42,5 +50,11 @@ public class Student {
 
   public void setAge(int age) {
     this.age = age;
+  }
+
+  @Override
+  public int compareTo(Student student) {
+    return this.getAge() - student.getAge(); // 升序
+//    return student.getAge() - this.getAge(); // 降序
   }
 }
