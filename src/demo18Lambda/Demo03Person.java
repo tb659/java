@@ -17,9 +17,11 @@ public class Demo03Person {
 //      }
 //    });
 
-    Arrays.sort(user, (Person u1, Person u2) -> {
-      return u2.getAge() - u1.getAge();
-    });
+//    Arrays.sort(user, (Person u1, Person u2) -> {
+//      return u2.getAge() - u1.getAge();
+//    });
+
+    Arrays.sort(user, (u1, u2) -> u2.getAge() - u1.getAge());
 
     for (Person person : user) {
       System.out.println(person);

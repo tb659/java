@@ -12,6 +12,8 @@ public class Demo02Cook {
     invokeCook(() -> {
       System.out.println("制作美食！！！");
     });
+
+    invokeCook(() -> System.out.println("制作美食~"));
   }
 
   private static void invokeCook(Cook cook) {
