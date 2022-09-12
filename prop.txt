@@ -1,0 +1,6 @@
+#save data by string
+#Mon Sep 12 22:23:02 CST 2022
+马儿扎哈=168
+迪丽热巴=168
+古利那扎=168
+name=jack
