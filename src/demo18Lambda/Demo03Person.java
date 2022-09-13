@@ -1,10 +1,16 @@
 package demo18Lambda;
 
+import demo10RedPacket.User;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class Demo03Person {
   public static void main(String[] args) {
+//    User user2 = new User("12", 123);
+//    user2.setName("");
+//    user2.setMoney(0);
+
     Person[] user = {
       new Person("张三", 18),
       new Person("李四", 12)
@@ -26,5 +32,7 @@ public class Demo03Person {
     for (Person person : user) {
       System.out.println(person);
     }
+
+
   }
 }

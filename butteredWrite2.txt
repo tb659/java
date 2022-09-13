@@ -1,0 +1,2 @@
+1.buffer字符流2
+2.buffer字符流1
