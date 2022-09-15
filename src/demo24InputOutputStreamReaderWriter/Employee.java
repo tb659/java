@@ -3,7 +3,7 @@ package demo24InputOutputStreamReaderWriter;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
-  public static final long serialVersionUID = 111L; // ·ÀÖ¹·´ĞòÁĞ»¯Ê§°Ü
+  public static final long serialVersionUID = 111L; // é˜²æ­¢ååºåˆ—åŒ–å¤±è´¥
   public String name;
   public String address;
   public transient int age;
