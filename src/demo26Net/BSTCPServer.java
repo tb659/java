@@ -9,6 +9,8 @@ public class BSTCPServer {
   public static void main(String[] args) throws IOException {
     ServerSocket server = new ServerSocket(8888);
 
+    System.out.println("Starting BSTCPServer...");
+
     while (true) {
       new Thread(() -> {
         try {
@@ -25,6 +27,7 @@ public class BSTCPServer {
           System.out.println(line);
 
           String htmlPath = line.split(" ")[1].substring(1);
+
           FileInputStream fis = new FileInputStream(htmlPath);
           OutputStream os = socket.getOutputStream();
 
