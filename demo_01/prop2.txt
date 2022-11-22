@@ -1,0 +1,6 @@
+#save data by char
+#Mon Sep 12 22:42:50 CST 2022
+\u9A6C\u513F\u624E\u54C8=168
+\u8FEA\u4E3D\u70ED\u5DF4=168
+\u53E4\u5229\u90A3\u624E=168
+name=jack
