@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<img id="img" src="/demo_06/checkCodeServlet"/>
+<a id="a" href="">看不清！换一张</a>
+</body>
+</html>
+<script>
+  const src = img.getAttribute("src");
+  img.onclick = function () {
+    this.src = `${src}?${new Date().getTime()}`
+  }
+  a.onclick = function (e) {
+    e.preventDefault();
+    img.onclick();
+  }
+</script>

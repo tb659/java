@@ -1,0 +1,15 @@
+<?xml version='1.0' ?>
+<!--<?xml-stylesheet type="text/css" href="index.css" ?>-->
+<users>
+	<user>
+		<name>zhangsan</name>
+		<age>112</age>
+		<sex>1</sex>
+	</user>
+	<user>
+		<name>lisi</name>
+		<age>132</age>
+		<sex>0</sex>
+	</user>
+	<![CDATA[if a > b && a < c]]>
+</users>
