@@ -25,7 +25,8 @@ public class DeleteUserServlet extends HttpServlet {
     UserService service = new UserServiceImpl();
     service.deleteUser(id);
 
-    response.sendRedirect(request.getContextPath() + "/userListServlet");
+    // response.sendRedirect(request.getContextPath() + "/userListServlet");
+    response.sendRedirect(request.getContextPath() + "/queryUserByPageServlet");
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

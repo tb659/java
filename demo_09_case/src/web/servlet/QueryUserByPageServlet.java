@@ -1,7 +1,7 @@
 package web.servlet;
 
+import domain.PageList;
 import domain.User;
-import org.apache.commons.beanutils.BeanUtils;
 import service.UserService;
 import service.impl.UserServiceImpl;
 
@@ -11,37 +11,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 /**
  * @Classname ${NAME}
  * @Description TODO
- * @Date 2022-11-22 09:10
+ * @Date 2022-11-24 11:59
  * @Created by @tb659
  */
-@WebServlet("/addUserServlet")
-public class AddUserServlet extends HttpServlet {
+@WebServlet("/queryUserByPageServlet")
+public class QueryUserByPageServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     request.setCharacterEncoding("utf-8");
 
-    // 获取参数
-    Map<String, String[]> parameterMap = request.getParameterMap();
-    User user = new User();
-    try {
-      BeanUtils.populate(user, parameterMap);
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
-    } catch (InvocationTargetException e) {
-      e.printStackTrace();
+    String pageSize = request.getParameter("pageSize");
+    String pageNumber = request.getParameter("pageNumber");
+
+    if (pageSize == null || "".equals(pageSize)) {
+      pageSize = "5";
+    }
+    if (pageNumber == null || "".equals(pageNumber)) {
+      pageNumber = "1";
     }
 
-    UserService service = new UserServiceImpl();
-    service.addUser(user);
+    Map<String, String[]> condition = request.getParameterMap();
 
-    // response.sendRedirect(request.getContextPath() + "/userListServlet");
-    response.sendRedirect(request.getContextPath() + "/queryUserByPageServlet");
+    UserService service = new UserServiceImpl();
+    PageList<User> pageList = service.queryUserByPage(pageSize, pageNumber, condition);
+
+    request.setAttribute("listData", pageList);
+    request.setAttribute("condition", condition);
+    request.getRequestDispatcher("/pageList.jsp").forward(request, response);
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

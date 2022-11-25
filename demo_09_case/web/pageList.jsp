@@ -32,7 +32,7 @@
       <h3 style="text-align: center">用户信息列表</h3>
 
       <div style="float: left;">
-        <form class="form-inline" action="${pageContext.request.contextPath}/findUserByPageServlet" method="post">
+        <form class="form-inline" action="${pageContext.request.contextPath}/queryUserByPageServlet" method="post">
           <div class="form-group">
             <label for="exampleInputName2">姓名</label>
             <input type="text" name="name" value="${condition.name[0]}" class="form-control" id="exampleInputName2">
@@ -69,7 +69,7 @@
             <th>操作</th>
           </tr>
 
-          <c:forEach items="${requestScope.users}" varStatus="item" var="user">
+          <c:forEach items="${requestScope.listData.list}" varStatus="item" var="user">
             <tr>
               <td><input type="checkbox" name="uid" value="${user.id}"></td>
               <td>${item.count}</td>
@@ -89,16 +89,62 @@
         </table>
       </form>
 
+      <div>
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <c:if test="${listData.pageNumber == 1}">
+              <li class="disabled">
+            </c:if>
+            <c:if test="${listData.pageNumber != 1}">
+              <li>
+            </c:if>
+              <a href="javascript:prevPage()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+
+            <c:forEach begin="1" end="${listData.totalPage}" var="i">
+              <c:if test="${listData.pageNumber == i}">
+                <li class="active">
+              </c:if>
+              <c:if test="${listData.pageNumber != i}">
+                <li>
+              </c:if>
+              <a href="javascript:queryList(${i})">${i}</a>
+              </li>
+            </c:forEach>
+
+              <c:if test="${listData.totalPage == listData.pageNumber}">
+                <li class="disabled">
+              </c:if>
+              <c:if test="${listData.totalPage != listData.pageNumber}">
+                <li>
+              </c:if>
+              <a href="javascript:nextPage()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            <span style="font-size: 25px;margin-left: 5px;">
+              共${listData.totalCount}条记录，共${listData.totalPage}页
+            </span>
+          </ul>
+        </nav>
+      </div>
+
     </div>
+
   </body>
 </html>
 <script type="text/javascript">
+
+  // 删除用户
   const deleteUser = (id) => {
     if (window.confirm("确定删除吗?")) {
       window.location.href = "${pageContext.request.contextPath}/deleteUserServlet?id=" + id
     }
   }
 
+  // 批量删除用户
   const deleteSelectedUsers = () => {
     let flag = false;
     $("input[name=uid]").each((index, item) => {
@@ -116,10 +162,31 @@
     }
   }
 
+  // 全选 全不选
   $("#firstCb").change(() => {
     const checked = $("#firstCb").prop("checked");
     $("input[name=uid]").each((index, item) => {
       $(item).prop("checked", checked);
     })
   })
+
+  // 上一页
+  const prevPage = () => {
+    if (${listData.pageNumber != 1}) {
+      queryList(${listData.pageNumber} -1)
+    }
+  }
+
+  // 下一页
+  const nextPage = () => {
+    if (${listData.totalPage - listData.pageNumber >= 1}) {
+      queryList(${listData.pageNumber +1})
+    }
+  }
+
+  const queryList = pageNumber => {
+    if (${listData.pageNumber != pageNumber}) {
+      window.location.href = "${pageContext.request.contextPath}/queryUserByPageServlet?pageNumber=" + pageNumber + "&pageSize=5&name=${condition.name[0]}&address=${condition.address[0]}&email=${condition.email[0]}"
+    }
+  }
 </script>

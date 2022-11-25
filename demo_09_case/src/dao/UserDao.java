@@ -4,6 +4,7 @@ import domain.Account;
 import domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Classname UserDao
@@ -25,4 +26,8 @@ public interface UserDao {
   User queryUserById(int id);
 
   void updateUser(User user);
+
+  int QueryTotalCount(Map<String, String[]> condition);
+
+  List<User> queryUserByPage(int start, int pageSize, Map<String, String[]> condition);
 }

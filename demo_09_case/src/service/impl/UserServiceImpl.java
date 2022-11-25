@@ -3,10 +3,12 @@ package service.impl;
 import dao.UserDao;
 import dao.impl.UserDaoImpl;
 import domain.Account;
+import domain.PageList;
 import domain.User;
 import service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Classname UserServiceImpl
@@ -46,5 +48,39 @@ public class UserServiceImpl implements UserService {
   public void updateUser(User user) {
     dao.updateUser(user);
   }
+
+  @Override
+  public void deleteSelectedUsers(String[] ids) {
+    if (ids != null && ids.length > 0) {
+      for (String id : ids) {
+        dao.deleteUser(Integer.parseInt(id));
+      }
+    }
+  }
+
+  @Override
+  public PageList<User> queryUserByPage(String _pageSize, String _pageNumber, Map<String, String[]> condition) {
+
+    int pageSize = Integer.parseInt(_pageSize);
+    int pageNumber = Integer.parseInt(_pageNumber);
+
+    PageList<User> pageList = new PageList<>();
+
+    pageList.setPageSize(pageSize);
+    pageList.setPageNumber(pageNumber);
+
+    int totalCount = dao.QueryTotalCount(condition);
+    pageList.setTotalCount(totalCount);
+
+    int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+    pageList.setTotalPage(totalPage);
+
+    int start = (pageNumber - 1) * pageSize;
+    List<User> list = dao.queryUserByPage(start, pageSize, condition);
+    pageList.setList(list);
+
+    return pageList;
+  }
+
 
 }

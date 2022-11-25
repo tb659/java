@@ -1,5 +1,8 @@
 package web.servlet;
 
+import service.UserService;
+import service.impl.UserServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +19,14 @@ import java.io.IOException;
 @WebServlet("/deleteSelectedServlet")
 public class DeleteSelectedServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    String[] ids = request.getParameterValues("uid");
+
+    UserService service = new UserServiceImpl();
+    service.deleteSelectedUsers(ids);
+
+    // response.sendRedirect(request.getContextPath() + "/userListServlet");
+    response.sendRedirect(request.getContextPath() + "/queryUserByPageServlet");
 
   }
 

@@ -1,9 +1,11 @@
 package service;
 
 import domain.Account;
+import domain.PageList;
 import domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Classname UserService
@@ -20,7 +22,7 @@ public interface UserService {
    * @date: 2022-11-21 21:55
    * @return: java.util.List<domain.User>
    */
-  List<User>findAll();
+  List<User> findAll();
 
   /**
    * @desc: 登录
@@ -65,4 +67,24 @@ public interface UserService {
    * @return: void
    */
   void updateUser(User user);
+
+  /**
+   * @desc: 批量删除指定用户
+   * @author: @tb659
+   * @date: 2022-11-24 10:01
+   * @Param ids:
+   * @return: void
+   */
+  void deleteSelectedUsers(String[] ids);
+
+  /**
+   * @desc: 分页条件查询用户
+   * @author: @tb659
+   * @date: 2022-11-24 21:27
+   * @Param pageSize:
+   * @Param pageNumber:
+   * @Param condition:
+   * @return: domain.PageList<domain.User>
+   */
+  PageList<User> queryUserByPage(String pageSize, String pageNumber, Map<String, String[]> condition);
 }
