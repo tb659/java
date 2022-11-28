@@ -31,7 +31,7 @@ public class ServletDemo02 implements Servlet {
    * @author: @TB659
    * @date: 2022-11-15
    * @params: []
-   * @returns: javax.servlet.ServletConfig
+   * @returns: javax.web.servlet.ServletConfig
    */
   @Override
   public ServletConfig getServletConfig() {

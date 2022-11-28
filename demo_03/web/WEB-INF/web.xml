@@ -5,19 +5,19 @@
          version="3.1">
 
 	<!-- 配置 service	-->
-	<servlet>
-		<servlet-name>demo01</servlet-name>
-		<servlet-class>web.tomcat.ServletDemo01</servlet-class>
-	</servlet>
+	<web.servlet>
+		<web.servlet-name>demo01</web.servlet-name>
+		<web.servlet-class>web.tomcat.ServletDemo01</web.servlet-class>
+	</web.servlet>
 	<!-- 映射	-->
-	<servlet-mapping>
-		<servlet-name>demo01</servlet-name>
+	<web.servlet-mapping>
+		<web.servlet-name>demo01</web.servlet-name>
 		<url-pattern>/demo01</url-pattern>
-	</servlet-mapping>
+	</web.servlet-mapping>
 
-	<servlet>
-		<servlet-name>demo02</servlet-name>
-		<servlet-class>web.tomcat.ServletDemo02</servlet-class>
+	<web.servlet>
+		<web.servlet-name>demo02</web.servlet-name>
+		<web.servlet-class>web.tomcat.ServletDemo02</web.servlet-class>
 		<!--指定Servlet的创建时机
       1.第一次被访问时，创建
         * <load-on-startup>的值为负数
@@ -25,9 +25,9 @@
         * <load-on-startup>的值为0或正整数
     -->
 		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>demo02</servlet-name>
+	</web.servlet>
+	<web.servlet-mapping>
+		<web.servlet-name>demo02</web.servlet-name>
 		<url-pattern>/demo02</url-pattern>
-	</servlet-mapping>
+	</web.servlet-mapping>
 </web-app>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+
+  </head>
+  <body>
+
+    <input id="getBtn" type="button" value="发送get请求">
+    <input id="postBtn" type="button" value="发送post请求">
+
+  </body>
+</html>
+<script>
+
+  $("#getBtn").click(() => {
+    $.get("ajaxServlet",{name:"get"},function (data) {
+      alert(data);
+    });
+  })
+
+  $("#postBtn").click(() => {
+    $.post("ajaxServlet",{name:"post"},function (data) {
+      alert(data);
+    },"text");
+  })
+
+</script>
