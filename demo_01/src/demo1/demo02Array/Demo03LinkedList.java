@@ -14,7 +14,7 @@ public class Demo03LinkedList {
     System.out.println(clone);
     ll.push(111);
     System.out.println(ll);
-//    ll.clear();
+   ll.clear();
     if (!ll.isEmpty()) {
       System.out.println(ll);
       System.out.println(ll.getFirst());
