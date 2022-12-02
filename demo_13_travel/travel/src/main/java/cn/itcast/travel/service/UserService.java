@@ -19,4 +19,13 @@ public interface UserService {
    * @return: boolean
    */
   boolean register(User user);
+
+  /**
+   * @desc: 激活
+   * @author: @tb659
+   * @date: 2022-12-02 22:39
+   * @Param code:
+   * @return: boolean
+   */
+  boolean activeUser(String code);
 }

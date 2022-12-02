@@ -35,8 +35,22 @@ public class UserServiceImpl implements UserService {
     user.setStatus("N");
     UserDao.register(user);
 
-    String content = "<a href='http://localhost:8080/travel/activeUser?code="+ user.getCode() + "'>点击激活旅游网</a>";
+    String content = "<a href='http://localhost:8080/travel/activeUser?code=" + user.getCode() + "'>点击激活旅游网</a>";
     MailUtils.sendMail(user.getEmail(), content, "激活邮件");
     return true;
   }
+
+  /**
+   * @desc: 激活
+   * @author: @tb659
+   * @date: 2022-12-02 22:39
+   * @Param code:
+   * @return: boolean
+   */
+  @Override
+  public boolean activeUser(String code) {
+
+    return false;
+  }
+
 }

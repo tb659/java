@@ -15,7 +15,7 @@ public interface UserDao {
    * @desc: 根据用户名查询用户
    * @author: @tb659
    * @date: 2022-12-02 13:29
-   * @Param username: 
+   * @Param username:
    * @return: cn.itcast.travel.domain.User
    */
   User queryUserByUsername(String username);
@@ -24,8 +24,16 @@ public interface UserDao {
    * @desc: 注册用户
    * @author: @tb659
    * @date: 2022-12-02 13:42
-   * @Param user: 
+   * @Param user:
    * @return: void
    */
   void register(User user);
+
+  /**
+   * @desc: 获取用户code码
+   * @author: @tb659
+   * @date: 2022-12-02 22:26
+   * @return: java.lang.String
+   */
+  String getUserCode(String code);
 }

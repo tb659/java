@@ -45,7 +45,21 @@ public class UserDaoImpl implements UserDao {
    */
   @Override
   public void register(User user) {
-    String sql = "insert into tab_user(username, password, name, birthday, sex, telephone, email) values(?,?,?,?,?,?,?)";
-    template.update(sql, user.getUsername(), user.getPassword(), user.getName(), user.getBirthday(), user.getSex(), user.getTelephone(), user.getEmail());
+    String sql = "insert into tab_user(username, password, name, birthday, sex, telephone, email, status, code) values(?,?,?,?,?,?,?,?,?)";
+    template.update(sql, user.getUsername(), user.getPassword(), user.getName(), user.getBirthday(), user.getSex(), user.getTelephone(), user.getEmail(), user.getStatus(), user.getCode());
+  }
+
+  /**
+   * @desc: 获取用户code码
+   * @author: @tb659
+   * @date: 2022-12-02 22:26
+   * @return: java.lang.String
+   */
+  @Override
+  public String getUserCode(String code) {
+    String User = "";
+    String sql = "select * from tab_user where code = ?";
+    template.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), code);
+    return null;
   }
 }
