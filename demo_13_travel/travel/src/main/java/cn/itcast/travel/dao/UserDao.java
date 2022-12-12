@@ -30,10 +30,29 @@ public interface UserDao {
   void register(User user);
 
   /**
-   * @desc: 获取用户code码
+   * @desc: 根据cdoe查询用户
    * @author: @tb659
-   * @date: 2022-12-02 22:26
-   * @return: java.lang.String
+   * @date: 2022-12-03 11:11
+   * @Param code: 
+   * @return: cn.itcast.travel.domain.User
    */
-  String getUserCode(String code);
+  User queryUserByCode(String code);
+
+  /**
+   * @desc: 更新用户状态
+   * @author: @tb659
+   * @date: 2022-12-03 11:14
+
+   * @return: void
+   */
+  void updateUserStatus(int code);
+
+  /**
+   * @desc: 用户登录
+   * @author: @tb659
+   * @date: 2022-12-03 21:47
+   * @Param loginUser:
+   * @return: cn.itcast.travel.domain.User
+   */
+  User login(User loginUser);
 }

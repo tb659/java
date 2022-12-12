@@ -9,10 +9,10 @@ import java.util.Properties;
  * 发邮件工具类
  */
 public final class MailUtils {
-  // private static final String USER = "gtrb1122@163.com"; // 发件人称号，同邮箱地址
-  // private static final String PASSWORD = "TYPHFDVLDSATKYME"; // 如果是qq邮箱可以使户端授权码，或者登录密码
-  private static final String USER = "782931122@qq.com"; // 发件人称号，同邮箱地址
-  private static final String PASSWORD = "griprzytaytebddi"; // 如果是qq邮箱可以使户端授权码，或者登录密码
+  private static final String USER = "gtrb1122@163.com"; // 发件人称号，同邮箱地址
+  private static final String PASSWORD = "TYPHFDVLDSATKYME"; // 如果是qq邮箱可以使户端授权码，或者登录密码
+  // private static final String USER = "782931122@qq.com"; // 发件人称号，同邮箱地址
+  // private static final String PASSWORD = "griprzytaytebddi"; // 如果是qq邮箱可以使户端授权码，或者登录密码
 
   /**
    * @param to    收件人邮箱
@@ -24,7 +24,8 @@ public final class MailUtils {
     try {
       final Properties props = new Properties();
       props.put("mail.smtp.auth", "true");
-      props.put("mail.smtp.host", "smtp.qq.com");
+      props.put("mail.smtp.host", "smtp.163.com");
+      // props.put("mail.smtp.host", "smtp.qq.com");
 
       // 发件人的账号
       props.put("mail.user", USER);

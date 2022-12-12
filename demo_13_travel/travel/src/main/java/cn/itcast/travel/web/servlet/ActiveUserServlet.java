@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * @Classname ${NAME}
- * @Description TODO
+ * @Description 激活用户
  * @Date 2022-12-02 22:24
  * @Created by @tb659
  */
@@ -22,12 +22,14 @@ public class ActiveUserServlet extends HttpServlet {
     String code = req.getParameter("code");
     if (code != null) {
       UserService service = new UserServiceImpl();
-      boolean flag = service.activeUser(code);
+      int activeStatus = service.activeUser(code);
       String msg = "";
-      if (flag) {
-         msg = "激活成功，请<a href='login.html'>登录</a>";
+      if (activeStatus == 2) {
+        msg = "请勿重复激活，去<a href='login.html'>登录</a>";
+      } else if (activeStatus == 1) {
+        msg = "激活成功，请<a href='login.html'>登录</a>";
       } else {
-        msg = "激活失败，请联系管理员！";
+        msg = "激活失败，请联系管理员！！！";
       }
       res.setContentType("text/html;charset=utf-8");
       res.getWriter().write(msg);

@@ -16,7 +16,7 @@ import cn.itcast.travel.util.UuidUtil;
 
 public class UserServiceImpl implements UserService {
 
-  private UserDao UserDao = new UserDaoImpl();
+  private UserDao userDao = new UserDaoImpl();
 
   /**
    * @desc: 注册用户
@@ -27,15 +27,15 @@ public class UserServiceImpl implements UserService {
    */
   @Override
   public boolean register(User user) {
-    User u = UserDao.queryUserByUsername(user.getUsername());
+    User u = userDao.queryUserByUsername(user.getUsername());
     if (u != null) {
       return false;
     }
     user.setCode(UuidUtil.getUuid());
     user.setStatus("N");
-    UserDao.register(user);
+    userDao.register(user);
 
-    String content = "<a href='http://localhost:8080/travel/activeUser?code=" + user.getCode() + "'>点击激活旅游网</a>";
+    String content = "<a href='http://localhost:8080/travel/user/activeUser?code=" + user.getCode() + "'>点击激活旅游网</a>";
     MailUtils.sendMail(user.getEmail(), content, "激活邮件");
     return true;
   }
@@ -48,9 +48,29 @@ public class UserServiceImpl implements UserService {
    * @return: boolean
    */
   @Override
-  public boolean activeUser(String code) {
+  public int activeUser(String code) {
+    User user = userDao.queryUserByCode(code);
+    if (user != null) {
+      if (user.getStatus().equals("Y")) {
+        return 2;
+      } else {
+        userDao.updateUserStatus(user.getUid());
+        return 1;
+      }
+    }
+    return 0;
+  }
 
-    return false;
+  /**
+   * @desc: 用户登录
+   * @author: @tb659
+   * @date: 2022-12-03 21:45
+   * @Param loginUser:
+   * @return: cn.itcast.travel.domain.User
+   */
+  @Override
+  public User login(User loginUser) {
+    return userDao.login(loginUser);
   }
 
 }

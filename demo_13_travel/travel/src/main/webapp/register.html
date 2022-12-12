@@ -191,16 +191,16 @@
 
   $("#registerForm").submit(function () {
 
-    // if (checkUsername() && checkPassword() && checkEmail() && checkName() && checkTelephone() && checkBirthday() && checkCheck()) {
-    $.post("registerUser", $(this).serialize(), (data) => {
-      console.log(data);
-      if (!data.flag) {
-        changeCheckCode();
-        return $("#error_msg").text(data.errorMsg);
-      }
-      location.href = "register_ok.html";
-    });
-    // }
+    if (checkUsername() && checkPassword() && checkEmail() && checkName() && checkTelephone() && checkBirthday() && checkCheck()) {
+      $.post("user/registerUser", $(this).serialize(), res => {
+        console.log(res);
+        if (!res.flag) {
+          changeCheckCode();
+          return $("#error_msg").text(res.errorMsg);
+        }
+        location.href = "register_ok.html";
+      });
+    }
     return false
   });
 </script>

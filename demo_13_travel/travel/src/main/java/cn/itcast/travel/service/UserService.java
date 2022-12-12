@@ -27,5 +27,14 @@ public interface UserService {
    * @Param code:
    * @return: boolean
    */
-  boolean activeUser(String code);
+  int activeUser(String code);
+
+  /**
+   * @desc: 用户登录
+   * @author: @tb659
+   * @date: 2022-12-03 21:45
+   * @Param loginUser:
+   * @return: cn.itcast.travel.domain.User
+   */
+  User login(User loginUser);
 }

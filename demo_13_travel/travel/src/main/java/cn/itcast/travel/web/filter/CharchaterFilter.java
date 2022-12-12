@@ -28,7 +28,8 @@ public class CharchaterFilter implements Filter {
       request.setCharacterEncoding("utf-8");
     }
     //处理响应乱码
-    response.setContentType("application/json;charset=utf-8");
+    // response.setContentType("application/json;charset=utf-8");
+    response.setContentType("text/html;charset=utf-8");
     filterChain.doFilter(request, response);
   }
 
